@@ -5,14 +5,10 @@ pipeline {
 			steps {
 				sh 'mvn clean package'
 			}
-		}
-		stage('Archive') {
-			steps {
-				post {
-					success {
-						echo 'Now archiving'
-						archiveArtifacts artifacts: '**/target/*.war'
-					}
+			post {
+				success {
+					echo 'Now archiving'
+					archiveArtifacts artifacts: '**/target/*.war'
 				}
 			}
 		}
